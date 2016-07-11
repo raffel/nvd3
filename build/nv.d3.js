@@ -1,4 +1,4 @@
-/* nvd3 version 1.8.4 (https://github.com/novus/nvd3) 2016-07-03 */
+/* nvd3 version 1.8.4 (https://github.com/novus/nvd3) 2016-07-11 */
 (function(){
 
 // set up main nv object
@@ -8593,7 +8593,7 @@ nv.models.multiBarChart = function() {
                 if(rotateLabels)
                     xTicks
                         .selectAll('.tick text')
-                        .attr('transform', 'rotate(' + rotateLabels + ' 0,0)')
+                        .attr('transform', 'translate(' + rotateLabels/9 + ',5) rotate(' + rotateLabels + ' 0,0)')
                         .style('text-anchor', rotateLabels > 0 ? 'start' : 'end');
 
                 g.select('.nv-x.nv-axis').selectAll('g.nv-axisMaxMin text')
