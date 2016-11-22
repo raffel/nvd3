@@ -236,7 +236,7 @@ nv.models.lineChart = function() {
               xTicks
                   .selectAll('line, text')
                   .style('opacity', 1)
-              if(rotateLabels) {
+              if(Math.abs(rotateLabels) > 0) {
                 xTicks
                     .selectAll('.tick text')
                     .attr('transform', 'translate(' + rotateLabels/9 + ',5) rotate(' + rotateLabels + ' 0,0)')
