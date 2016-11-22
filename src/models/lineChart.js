@@ -27,6 +27,7 @@ nv.models.lineChart = function() {
         , x
         , y
         , focusEnable = false
+        , rotateLabels = 0
         , state = nv.utils.state()
         , defaultState = null
         , noData = null
@@ -230,6 +231,16 @@ nv.models.lineChart = function() {
                   .duration(duration)
                   .call(xAxis)
                 ;
+              }
+              var xTicks = g.select('.nv-x.nv-axis > g').selectAll('g');
+              xTicks
+                  .selectAll('line, text')
+                  .style('opacity', 1)
+              if(rotateLabels) {
+                xTicks
+                    .selectAll('.tick text')
+                    .attr('transform', 'translate(' + rotateLabels/9 + ',5) rotate(' + rotateLabels + ' 0,0)')
+                    .style('text-anchor', rotateLabels > 0 ? 'start' : 'end');
               }
             }
 
@@ -463,6 +474,7 @@ nv.models.lineChart = function() {
         showYAxis:    {get: function(){return showYAxis;}, set: function(_){showYAxis=_;}},
         defaultState:    {get: function(){return defaultState;}, set: function(_){defaultState=_;}},
         noData:    {get: function(){return noData;}, set: function(_){noData=_;}},
+        rotateLabels:    {get: function(){return rotateLabels;}, set: function(_){rotateLabels=_;}},
         // Focus options, mostly passed onto focus model.
         focusEnable:    {get: function(){return focusEnable;}, set: function(_){focusEnable=_;}},
         focusHeight:     {get: function(){return focus.height();}, set: function(_){focus.height(_);}},
