@@ -1,4 +1,4 @@
-/* nvd3 version 1.8.4 (https://github.com/novus/nvd3) 2016-11-22 */
+/* nvd3 version 1.8.4 (https://github.com/novus/nvd3) 2016-11-23 */
 (function(){
 
 // set up main nv object
@@ -6919,16 +6919,16 @@ nv.models.lineChart = function() {
                   .duration(duration)
                   .call(xAxis)
                 ;
-              }
-              var xTicks = g.select('.nv-x.nv-axis > g').selectAll('g');
-              xTicks
-                  .selectAll('line, text')
-                  .style('opacity', 1)
-              if(Math.abs(rotateLabels) > 0) {
+                var xTicks = g.select('.nv-x.nv-axis > g').selectAll('g');
                 xTicks
-                    .selectAll('.tick text')
-                    .attr('transform', 'translate(' + rotateLabels/9 + ',5) rotate(' + rotateLabels + ' 0,0)')
-                    .style('text-anchor', rotateLabels > 0 ? 'start' : 'end');
+                    .selectAll('line, text')
+                    .style('opacity', 1)
+                if(Math.abs(rotateLabels) > 0) {
+                  xTicks
+                      .selectAll('.tick text')
+                      .attr('transform', 'translate(' + rotateLabels/9 + ',5) rotate(' + rotateLabels + ' 0,0)')
+                      .style('text-anchor', rotateLabels > 0 ? 'start' : 'end');
+                }
               }
             }
 
@@ -13572,6 +13572,7 @@ nv.models.stackedAreaChart = function() {
         , showYAxis = true
         , rightAlignYAxis = false
         , focusEnable = false
+        , rotateLabels = 0
         , useInteractiveGuideline = false
         , showTotalInTooltip = true
         , totalLabel = 'TOTAL'
@@ -13841,6 +13842,16 @@ nv.models.stackedAreaChart = function() {
                         .duration(duration)
                         .call(xAxis)
                         ;
+                    var xTicks = g.select('.nv-x.nv-axis > g').selectAll('g');
+                    xTicks
+                        .selectAll('line, text')
+                        .style('opacity', 1)
+                    if(Math.abs(rotateLabels) > 0) {
+                      xTicks
+                          .selectAll('.tick text')
+                          .attr('transform', 'translate(' + rotateLabels/9 + ',5) rotate(' + rotateLabels + ' 0,0)')
+                          .style('text-anchor', rotateLabels > 0 ? 'start' : 'end');
+                    }
                 }
             }
 
@@ -14133,6 +14144,7 @@ nv.models.stackedAreaChart = function() {
         showYAxis:    {get: function(){return showYAxis;}, set: function(_){showYAxis=_;}},
         defaultState:    {get: function(){return defaultState;}, set: function(_){defaultState=_;}},
         noData:    {get: function(){return noData;}, set: function(_){noData=_;}},
+        rotateLabels:    {get: function(){return rotateLabels;}, set: function(_){rotateLabels=_;}},
         showControls:    {get: function(){return showControls;}, set: function(_){showControls=_;}},
         controlLabels:    {get: function(){return controlLabels;}, set: function(_){controlLabels=_;}},
         controlOptions:    {get: function(){return controlOptions;}, set: function(_){controlOptions=_;}},

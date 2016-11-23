@@ -231,16 +231,16 @@ nv.models.lineChart = function() {
                   .duration(duration)
                   .call(xAxis)
                 ;
-              }
-              var xTicks = g.select('.nv-x.nv-axis > g').selectAll('g');
-              xTicks
-                  .selectAll('line, text')
-                  .style('opacity', 1)
-              if(Math.abs(rotateLabels) > 0) {
+                var xTicks = g.select('.nv-x.nv-axis > g').selectAll('g');
                 xTicks
-                    .selectAll('.tick text')
-                    .attr('transform', 'translate(' + rotateLabels/9 + ',5) rotate(' + rotateLabels + ' 0,0)')
-                    .style('text-anchor', rotateLabels > 0 ? 'start' : 'end');
+                    .selectAll('line, text')
+                    .style('opacity', 1)
+                if(Math.abs(rotateLabels) > 0) {
+                  xTicks
+                      .selectAll('.tick text')
+                      .attr('transform', 'translate(' + rotateLabels/9 + ',5) rotate(' + rotateLabels + ' 0,0)')
+                      .style('text-anchor', rotateLabels > 0 ? 'start' : 'end');
+                }
               }
             }
 
